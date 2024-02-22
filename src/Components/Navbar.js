@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import {ReactComponent as LogoSVG} from '../SVGs/Logo.svg';
+import {ReactComponent as LogoSVG} from '../SVGs/logo.svg';
 
 function Navbar() {
     const navbar = useRef();
