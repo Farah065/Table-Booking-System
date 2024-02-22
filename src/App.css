@@ -101,7 +101,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20%;
+    padding: 20px 20vw;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -115,7 +115,7 @@ button {
 }
 
 .nav-shrink {
-    padding: 8px 20%;
+    padding: 8px 20vw;
     transition: ease-in-out 200ms;
 }
 
@@ -127,7 +127,26 @@ button {
 .nav-item {
     font-weight: bold;
     font-size: 16px;
+    position: relative;
 }
+
+.nav-item:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: -5px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: var(--primary-1);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  
+  .nav-item:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
 
 /* ---------- hero ---------- */
 .hero {
@@ -136,7 +155,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20%;
+    padding: 0 20vw;
     margin: 0 0 64px 0;
 }
 
@@ -174,7 +193,7 @@ button {
     padding-bottom: 64px;
     border-bottom: solid;
     border-color: var(--highlight-1);
-    margin: 32px 20% 0 20%;
+    margin: 32px 20vw 0 20vw;
 }
 
 .specials > header {
@@ -240,7 +259,7 @@ button {
     padding-bottom: 64px;
     border-bottom: solid;
     border-color: var(--highlight-1);
-    margin: 32px 20% 0 20%;
+    margin: 32px 20vw 0 20vw;
 }
 
 .testimonials > header {
@@ -298,7 +317,7 @@ button {
 /* ---------- about ---------- */
 .about {
     padding-bottom: 64px;
-    margin: 32px 20% 0 20%;
+    margin: 32px 20vw 0 20vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -354,6 +373,55 @@ button {
 footer {
     height: 248px;
     background-color: var(--primary-1);
+    display: flex;
+    align-items: center;
+    padding: 0 20vw;
+}
+
+.footer-contents {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+footer img {
+    object-fit: contain;
+    border-radius: 0;
+    height: max-content;
+}
+
+footer h3 {
+    color: var(--highlight-1);
+}
+
+footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-nav {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-nav .nav-item {
+    color: var(--highlight-1);
+    font-weight: 500;
+}
+
+footer li {
+    color: var(--highlight-1);
+    list-style: none;
+    font-weight: 500;
+}
+
+footer section {
+    max-width: 174px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 /* ---------- calendar ---------- */
