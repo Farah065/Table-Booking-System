@@ -97,26 +97,31 @@ button {
 }
 
 /* ---------- navbar ---------- */
-.nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 20vw;
+.navbar {
     position: sticky;
     top: 0;
     z-index: 1;
     background-color: white;
     transition: ease-in-out 200ms;
+    padding: 20px 0;
+}
+
+.nav-shrink {
+    padding: 8px 0;
+    transition: ease-in-out 200ms;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 910px;
+    margin: 0 auto;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-.nav-shrink {
-    padding: 8px 20vw;
-    transition: ease-in-out 200ms;
 }
 
 .nav {
@@ -143,20 +148,37 @@ button {
     width: 0;
   }
   
-  .nav-item:hover:after { 
-    width: 100%; 
-    left: 0; 
-  }
+.nav-item:hover:after { 
+    width: 100%;
+    left: 0;
+}
+
+@media only screen and (max-width: 992px) {
+    .nav-container {
+        max-width: 700px;
+    }
+    
+    .nav {
+        gap: 20px;
+    }
+    
+    .nav-item {
+        font-size: 14px;
+    }
+}
 
 /* ---------- hero ---------- */
-.hero {
+.hero-container {
     background-color: var(--primary-1);
+}
+
+.hero {
     height: 356px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20vw;
-    margin: 0 0 64px 0;
+    max-width: 910px;
+    margin: 0 auto 64px auto;
 }
 
 .hero h1 {
@@ -184,8 +206,14 @@ button {
     width: 300px;
 }
 
-.hero img {
+.hero > img {
     margin-top: 100px;
+}
+
+@media only screen and (max-width: 992px) {
+    .hero {
+        max-width: 700px;
+    }
 }
 
 /* ---------- specials ---------- */
@@ -193,7 +221,8 @@ button {
     padding-bottom: 64px;
     border-bottom: solid;
     border-color: var(--highlight-1);
-    margin: 32px 20vw 0 20vw;
+    margin: 32px auto 0 auto;
+    max-width: 910px;
 }
 
 .specials > header {
@@ -201,6 +230,12 @@ button {
     align-items: center;
     justify-content: space-between;
     padding: 32px 0;
+}
+
+@media only screen and (max-width: 992px) {
+    .specials {
+        max-width: 700px;
+    }
 }
 
 /* ---------- menu cards ---------- */
@@ -213,7 +248,7 @@ button {
     flex-direction: column;
 }
 
-.menu-card img {
+.menu-card > img {
     border-radius: 16px 16px 0 0;
     flex-shrink: 0;
 }
@@ -249,7 +284,7 @@ button {
     cursor: pointer;
 }
 
-.order p {
+.order > p {
     font-weight: 600;
     font-size: 14px;
 }
@@ -259,13 +294,20 @@ button {
     padding-bottom: 64px;
     border-bottom: solid;
     border-color: var(--highlight-1);
-    margin: 32px 20vw 0 20vw;
+    margin: 32px auto 0 auto;
+    max-width: 910px;
 }
 
 .testimonials > header {
     display: flex;
     justify-content: center;
     padding: 32px 0;
+}
+
+@media only screen and (max-width: 992px) {
+    .testimonials {
+        max-width: 700px;
+    }
 }
 
 /* ---------- testimonial cards ----------*/
@@ -280,7 +322,7 @@ button {
     flex-direction: column;
 }
 
-.testimonial-card img {
+.testimonial-card > img {
     display: block;
     width: 80px;
     height: 80px;
@@ -317,7 +359,8 @@ button {
 /* ---------- about ---------- */
 .about {
     padding-bottom: 64px;
-    margin: 32px 20vw 0 20vw;
+    margin: 32px auto 0 auto;
+    max-width: 910px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -346,7 +389,7 @@ button {
     font-size: 16px;
 }
 
-.about img {
+.images > img {
     object-position: left;
 }
 
@@ -369,22 +412,33 @@ button {
     left: 0;
 }
 
+@media only screen and (max-width: 992px) {
+    .about {
+        max-width: 700px;
+    }
+
+    .about-text {
+        width: 340px;
+    }
+}
+
 /* ---------- footer ---------- */
 footer {
     height: 248px;
     background-color: var(--primary-1);
     display: flex;
     align-items: center;
-    padding: 0 20vw;
 }
 
 .footer-contents {
     display: flex;
     justify-content: space-between;
+    max-width: 910px;
     width: 100%;
+    margin: 0 auto;
 }
 
-footer img {
+.footer-contents > img {
     object-fit: contain;
     border-radius: 0;
     height: max-content;
@@ -422,6 +476,12 @@ footer section {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+@media only screen and (max-width: 992px) {
+    .footer-contents {
+        max-width: 700px;
+    }
 }
 
 /* ---------- calendar ---------- */

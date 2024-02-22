@@ -2,7 +2,7 @@ import TestimonialCard from "./TestimonialCard";
 import personImg1 from "../Images/person-1.jpg";
 import personImg2 from "../Images/person-2.jpg";
 import personImg3 from "../Images/person-3.jpg";
-import personImg4 from "../Images/person-4.jpg";
+// import personImg4 from "../Images/person-4.jpg";
 
 function Testimonials() {
     const person1 = {
@@ -26,13 +26,13 @@ function Testimonials() {
         image: personImg3,
         alt: "black man with peppered hair looking into camera"
     }
-    const person4 = {
-        personName: "Mason Turner",
-        rating: "4.9/5",
-        quote: "Mediterranean magic at Little Lemon. Savory kebabs, warm ambiance—a top choice for an exquisite, flavorful dining experience.",
-        image: personImg4,
-        alt: "white man with grey hair looking into camera"
-    }
+    // const person4 = {
+    //     personName: "Mason Turner",
+    //     rating: "4.9/5",
+    //     quote: "Mediterranean magic at Little Lemon. Savory kebabs, warm ambiance—a top choice for an exquisite, flavorful dining experience.",
+    //     image: personImg4,
+    //     alt: "white man with grey hair looking into camera"
+    // }
 
     return (
         <article className="testimonials">
@@ -43,7 +43,7 @@ function Testimonials() {
                 <TestimonialCard person={person1} />
                 <TestimonialCard person={person2} />
                 <TestimonialCard person={person3} />
-                <TestimonialCard person={person4} />
+                {/* <TestimonialCard person={person4} /> */}
             </div>
         </article>
     );

@@ -32,7 +32,8 @@ function Navbar() {
     }
     
     return (
-        <div className="nav-container" ref={navbar}>
+      <div className="navbar" ref={navbar}>
+        <div className="nav-container">
             <LogoSVG />
             <nav className="nav">
                 <Link to="/" className="nav-item" onClick={scrollToTop}>HOME</Link>
@@ -43,6 +44,7 @@ function Navbar() {
                 <Link to="/login" className="nav-item" onClick={scrollToTop}>LOGIN</Link>
             </nav>
         </div>
+      </div>
     );
 }
 
