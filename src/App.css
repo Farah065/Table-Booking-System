@@ -299,10 +299,55 @@ button {
 .about {
     padding-bottom: 64px;
     margin: 32px 20% 0 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 464px;
 }
 
 .about-text > header {
-    padding: 32px 0;
+    padding: 32px 0 0 0;
+}
+
+.about h1 {
+    margin: -20px 0;
+}
+
+.about h2 {
+    margin: 0 0 -10px 0;
+}
+
+.about p {
+    font-size: 16px;
+}
+
+.about img {
+    object-position: left;
+}
+
+.images {
+    position: relative;
+    margin-top: 32px;
+    width: 300px;
+    height: 350px;
+}
+
+#img1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#img2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 /* ---------- footer ---------- */
