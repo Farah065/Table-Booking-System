@@ -1,14 +1,133 @@
 * {
     padding: 0;
     margin: 0;
-    color: #333333;
+    color: var(--highlight-2);
+    font-family: "Karla", sans-serif;
+    text-decoration: none;
 }
 
-.app {
+:root{
+    --primary-1: #495E57;
+    --primary-2: #F4CE14;
+    --highlight-1: #EDEFEE;
+    --highlight-2: #333333;
+}
+
+@font-face {
+    font-family: "Markazi Text";
+    src: url("./Fonts/Markazi\ Text.ttf");
+}
+
+@font-face {
+    font-family: "Karla";
+    src: url("./Fonts/Karla.ttf");
+}
+
+/* ---------- general ---------- */
+h1 {
+    font-family: "Markazi Text", serif;
+    font-size: 64px;
+    font-weight: 500;
+}
+
+h2 {
+    font-family: "Markazi Text", serif;
+    font-size: 40px;
+    font-weight: normal;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+img {
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+/* ---------- navbar ---------- */
+.nav-container {
     display: flex;
-    height: 100vh;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    padding: 20px 20%;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    transition: ease-in-out 200ms;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.nav-shrink {
+    padding: 8px 20%;
+    transition: ease-in-out 200ms;
+}
+
+.nav {
+    display: flex;
+    gap: 50px;
+}
+
+.nav-item {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* ---------- hero ---------- */
+.hero {
+    background-color: var(--primary-1);
+    height: 356px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20%;
+}
+
+.hero h1 {
+    color: var(--primary-2);
+    margin: -25px 0;
+}
+
+.hero h2 {
+    color: var(--highlight-1);
+    margin: 0 0 -10px 0;
+}
+
+.hero p {
+    color: var(--highlight-1);
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 300px;
+}
+
+.hero img {
+    margin-top: 100px;
+}
+
+/* ---------- button ---------- */
+.primary-btn {
+    background-color: var(--primary-2);
+    border: none;
+    outline: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    align-self: start;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* ---------- calendar ---------- */
@@ -23,7 +142,7 @@
 .calendar-bg {
     width: 20vw;
     height: max-content;
-    background-color: #EDEFEE;
+    background-color: var(--highlight-1);
     border-radius: 0.8vw;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -41,7 +160,7 @@
     border-radius: 50%;
     border-style: solid;
     border-width: 0.15vw;
-    border-color: #333333;
+    border-color: var(--highlight-2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,10 +216,10 @@
 }
 
 #selected {
-    border-color: #495E57;
+    border-color: var(--primary-1);
     border-width: 0.25vw;
 }
 
 #selected p {
-    color: #495E57;
+    color: var(--primary-1);
 }
