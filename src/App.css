@@ -172,6 +172,33 @@ button {
     left: 0;
 }
 
+.nav-container-overlay {
+    position: fixed;
+    top: 67px;
+    right: 0;
+    background-color: white;
+    border-top: solid;
+    border-color: var(--highlight-1);
+    display: none;
+    width: 100%;
+}
+
+.nav-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 12px;
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item-overlay {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 12px;
+}
+
 @media only screen and (max-width: 992px) {
     .nav-container {
         max-width: 700px;
@@ -187,6 +214,11 @@ button {
 }
 
 @media only screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px 0;
+        transition: none;
+    }
+
     .nav-container-large {
         display: none;
     }
@@ -194,6 +226,15 @@ button {
     .nav-container-small {
         display: flex;
         max-width: 500px;
+    }
+
+    .nav-shrink {
+        padding: 10px 0;
+        transition: none;
+    }
+
+    .nav-container-overlay {
+        display: flex;
     }
 }
 
