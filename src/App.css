@@ -110,6 +110,7 @@ button {
 /* ---------- navbar ---------- */
 .navbar {
     position: sticky;
+    width: 100%;
     top: 0;
     z-index: 5;
     background-color: white;
@@ -123,6 +124,7 @@ button {
 }
 
 .nav-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -133,6 +135,15 @@ button {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.nav-container-small > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .nav-container-small {
@@ -174,13 +185,19 @@ button {
 
 .nav-container-overlay {
     position: fixed;
-    top: 67px;
+    top: -300px;
     right: 0;
     background-color: white;
     border-top: solid;
     border-color: var(--highlight-1);
     display: none;
     width: 100%;
+    transition: ease-in-out 200ms;
+}
+
+.open {
+    top: 67px;
+    transition: ease-in-out 200ms;
 }
 
 .nav-overlay {
@@ -215,7 +232,7 @@ button {
 
 @media only screen and (max-width: 768px) {
     .navbar {
-        padding: 10px 0;
+        padding: 0;
         transition: none;
     }
 
@@ -225,11 +242,15 @@ button {
 
     .nav-container-small {
         display: flex;
-        max-width: 500px;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        position: relative;
+        padding: 10px 0;
     }
 
     .nav-shrink {
-        padding: 10px 0;
+        padding: 0;
         transition: none;
     }
 

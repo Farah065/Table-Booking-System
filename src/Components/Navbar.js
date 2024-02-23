@@ -48,11 +48,13 @@ function Navbar() {
                     <Link to="/login" className="nav-item" onClick={scrollToTop}>LOGIN</Link>
                 </nav>
             </div>
+            <NavOverlay isOpen={isOpen} setOpen={setOpen} />
             <div className="nav-container nav-container-small">
+              <div>
                 <img src={LogoSmall} alt="small version of the little lemon logo" width={140} />
                 <Hamburger toggled={isOpen} toggle={setOpen} color="#333333" rounded label="show navbar" />
+              </div>
             </div>
-            {isOpen ? <NavOverlay isOpen={isOpen} setOpen={setOpen} /> : <></>}
         </div>
     );
 }
