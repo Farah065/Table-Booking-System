@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import {ReactComponent as LogoSVG} from '../SVGs/logo.svg';
+import LogoSmall from '../Images/logo-small.png';
+import {ReactComponent as HamburgerMenuSVG} from '../SVGs/hamburger-menu.svg';
 
 function Navbar() {
     const navbar = useRef();
@@ -33,8 +34,8 @@ function Navbar() {
     
     return (
       <div className="navbar" ref={navbar}>
-        <div className="nav-container">
-            <LogoSVG />
+        <div className="nav-container nav-container-large">
+            <img src={LogoSmall} alt="small version of the little lemon logo" width={140} />
             <nav className="nav">
                 <Link to="/" className="nav-item" onClick={scrollToTop}>HOME</Link>
                 <Link to="/about" className="nav-item" onClick={scrollToTop}>ABOUT</Link>
@@ -43,6 +44,10 @@ function Navbar() {
                 <Link to="/order-online" className="nav-item" onClick={scrollToTop}>ORDER ONLINE</Link>
                 <Link to="/login" className="nav-item" onClick={scrollToTop}>LOGIN</Link>
             </nav>
+        </div>
+        <div className="nav-container nav-container-small">
+            <img src={LogoSmall} alt="small version of the little lemon logo" width={140} />
+            <HamburgerMenuSVG />
         </div>
       </div>
     );

@@ -6,8 +6,10 @@ function TestimonialCard(props) {
         <section className="testimonial-card">
             <img src={props.person.image} alt={props.person.alt} />
             <div className="review">
-                <QuotationSVG width={20} height={20} id="quotation" />
-                <p>{props.person.quote}</p>
+                <div>
+                    <QuotationSVG width={20} height={20} id="quotation" />
+                    <p>{props.person.quote}</p>
+                </div>
                 <div>
                     <h3>{props.person.personName}</h3>
                     <div className="stars">
