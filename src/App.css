@@ -96,6 +96,36 @@ button {
     }
 }
 
+@media only screen and (max-width: 576px) {
+    h1 {
+        font-size: 48px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .stars {
+        justify-content: center;
+    }
+
+    .card-group {
+        flex-direction: row;
+        padding: 30px;
+        overflow-x: scroll;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .card-group::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+}
+
 /* ---------- button ---------- */
 .primary-btn {
     background-color: var(--primary-2);
@@ -105,6 +135,13 @@ button {
     border-radius: 12px;
     font-size: 16px;
     font-weight: 600;
+}
+
+@media only screen and (max-width: 576px) {
+    .primary-btn {
+        padding: 8px 16px;
+        font-size: 15px;
+    }
 }
 
 /* ---------- navbar ---------- */
@@ -259,6 +296,13 @@ button {
     }
 }
 
+@media only screen and (max-width: 576px) {
+    .nav-container-small > div {
+        max-width: 100%;
+        padding: 0 30px;
+    }
+}
+
 /* ---------- hero ---------- */
 .hero-container {
     background-color: var(--primary-1);
@@ -325,6 +369,29 @@ button {
     }
 }
 
+@media only screen and (max-width: 576px) {
+    .hero {
+        max-width: 100%;
+        padding: 0 30px;
+        margin: 0;
+    }
+    
+    .hero p {
+        width: 150px;
+    }
+
+    .hero-text {
+        width: 250px;
+    }
+
+    .hero > img {
+        width: 30vw;
+        height: 35vw;
+        position: absolute;
+        right: 30px;
+    }
+}
+
 /* ---------- specials ---------- */
 .specials {
     padding-bottom: 64px;
@@ -350,6 +417,12 @@ button {
 @media only screen and (max-width: 768px) {
     .specials {
         max-width: 500px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .specials {
+        max-width: 100%;
     }
 }
 
@@ -422,6 +495,26 @@ button {
     }
 }
 
+@media only screen and (max-width: 576px) {
+    .menu-card {
+        width: 230px;
+        height: 320px;
+        flex-direction: column;
+    }
+
+    .menu-card > img {
+        border-radius: 16px 16px 0 0;
+        flex-shrink: 0;
+        width: 230px;
+        height: 120px;
+    }
+    
+    .specials > header {
+        flex-direction: column;
+    }
+}
+
+
 /* ---------- testimonials ----------*/
 .testimonials {
     padding-bottom: 64px;
@@ -449,6 +542,12 @@ button {
     }
 }
 
+@media only screen and (max-width: 576px) {
+    .testimonials {
+        max-width: 100%;
+    }
+}
+
 /* ---------- testimonial cards ----------*/
 .testimonial-card {
     width: 182px;
@@ -459,6 +558,7 @@ button {
     padding: 16px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .testimonial-card > img {
@@ -486,6 +586,7 @@ button {
 
 #quotation {
     position: absolute;
+    top: 0;
 }
 
 .review {
@@ -493,6 +594,10 @@ button {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+}
+
+.review > div {
+    position: relative;
 }
 
 @media only screen and (max-width: 768px) {
@@ -514,20 +619,39 @@ button {
     }
 
     .review {
-        display: flex;
         flex-direction: column-reverse;
         align-items: flex-start;
         justify-content: center;
         gap: 12px;
         margin-left: -40px;
     }
+}
 
-    .review > div {
-        position: relative;
+@media only screen and (max-width: 576px) {
+    .testimonial-card {
+        width: 230px;
+        height: 252px;
+        flex-direction: column;
+        padding: 16px;
+        margin: 40px 0 0 0;
+        box-sizing: border-box;
     }
 
-    #quotation {
-        top: 0px;
+    .testimonial-card > img {
+        margin: -62px auto 0 auto;
+        transform: translate(0, 0);
+    }
+
+    .testimonial-card h3 {
+        text-align: center;
+    }
+
+    .review {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-left: 0;
     }
 }
 
@@ -626,6 +750,34 @@ button {
     }
 }
 
+@media only screen and (max-width: 576px) {
+    .about {
+        max-width: 100%;
+        padding: 0 30px 64px 30px;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+
+    .images {
+        width: 100%;
+        max-width: 300px;
+        height: 240px;
+    }
+
+    #img1 {
+        width: 175px;
+        height: 150px;
+        z-index: 0;
+    }
+    
+    #img2 {
+        width: 175px;
+        height: 150px;
+    }
+}
+
 /* ---------- footer ---------- */
 footer {
     height: 248px;
@@ -667,6 +819,7 @@ footer ul {
 .footer-nav .nav-item {
     color: var(--highlight-1);
     font-weight: 500;
+    width: max-content;
 }
 
 footer li {
@@ -699,6 +852,18 @@ footer section {
         grid-template-columns: repeat(2, minmax(min-content, max-content));
         row-gap: 48px;
         justify-content: space-around;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    footer {
+        height: 480px;
+    }
+
+    .footer-contents {
+        max-width: 100%;
+        padding: 0 30px;
+        column-gap: 32px;
     }
 }
 
