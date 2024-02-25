@@ -1,5 +1,5 @@
 import {ReactComponent as QuotationSVG} from '../SVGs/quotation.svg';
-import {ReactComponent as StarSVG} from '../SVGs/star.svg';
+import {ReactComponent as StarSVG} from '../SVGs/star-filled.svg';
 
 function TestimonialCard(props) {
     return (

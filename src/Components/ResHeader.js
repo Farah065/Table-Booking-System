@@ -1,8 +1,31 @@
-function ResHeader() {
-    return (
-        <article>
+import { useState } from "react";
 
-        </article>
+function ResHeader() {
+    const [step, setStep] = useState(1);
+
+    function handleClick() {
+        setStep(step + 1);
+    }
+
+    return (
+        <header className="res-header-container">
+            <div className="res-header">
+                <h1>Reserve a Table</h1>
+                <div className="steps">
+                    <div id={step === 1 ? "on" : "complete"}>
+                        {step <= 1 ? <h2>1</h2> : <></>}
+                    </div>
+                    <div id={step === 2 ? "on" : step > 2 ? "complete" : ""}>
+                        {step <= 2 ? <h2>2</h2> : <></>}
+                    </div>
+                    <div id={step === 3 ? "on" : step > 2 ? "complete" : ""}>
+                        {step <= 3 ? <h2>3</h2> : <></>}
+                    </div>
+                    <hr className={step === 1 ? "step-1" : step === 2 ? "step-2" : "step-3"} />
+                </div>
+                <button className="primary-btn" onClick={handleClick}>next</button>
+            </div>
+        </header>
     );
 }
 

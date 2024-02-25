@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
+// import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LogoSmall from '../Images/logo-small.png';
 import Hamburger from 'hamburger-react'
@@ -6,24 +7,25 @@ import NavOverlay from './NavOverlay';
 
 function Navbar() {
     const navbar = useRef();
-    useEffect(() => {
-        let lastScrollY = window.scrollY;
 
-        const handleScroll = () => {
-            if (lastScrollY < window.scrollY) {
-                navbar.current.classList.add("nav-shrink");
-            } else if (window.scrollY === 0) {
-                navbar.current.classList.remove("nav-shrink");
-            }
+    // useEffect(() => {
+    //     let lastScrollY = window.scrollY;
 
-            lastScrollY = window.scrollY;
-        };
+    //     const handleScroll = () => {
+    //         if (lastScrollY < window.scrollY) {
+    //             navbar.current.classList.add("nav-shrink");
+    //         } else if (window.scrollY === 0) {
+    //             navbar.current.classList.remove("nav-shrink");
+    //         }
 
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
+    //         lastScrollY = window.scrollY;
+    //     };
+
+    //     window.addEventListener("scroll", handleScroll);
+    //     return () => {
+    //         window.removeEventListener("scroll", handleScroll);
+    //     };
+    // }, []);
 
     function scrollToTop() {
         window.scrollTo({

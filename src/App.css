@@ -867,6 +867,71 @@ footer section {
     }
 }
 
+/* ---------- res header ---------- */
+.res-header-container {
+    height: 250px;
+    background-color: var(--primary-1);
+    margin-bottom: 28px;
+}
+
+.res-header {
+    width: 100%;
+    max-width: 910px;
+    margin: 0 auto;
+}
+
+.res-header > h1 {
+    color: var(--primary-2);
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.steps > div {
+    height: 50px;
+    width: 50px;
+    background-color: var(--highlight-1);
+    border-radius: 50%;
+    border-style: solid;
+    border-color: transparent;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#on {
+    border-style: solid;
+    border-color: var(--primary-2);
+}
+
+#complete {
+    background-color: var(--primary-2);
+}
+
+.steps > hr {
+    position: absolute;
+    width: 95%;
+    height: 4px;
+    border: none;
+    transform: translate(2.5%, 25px);
+}
+
+.step-1 {
+    background: var(--highlight-1);
+}
+
+.step-2 {
+    background: linear-gradient(to right, var(--primary-2) 0%, var(--primary-2) 50%, var(--highlight-1) 50%, var(--highlight-1) 100%);
+}
+
+.step-3 {
+    background: var(--primary-2);
+}
+
 /* ---------- calendar ---------- */
 .calendar {
     -moz-user-select: none;
