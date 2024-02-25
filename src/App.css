@@ -872,6 +872,9 @@ footer section {
     height: 250px;
     background-color: var(--primary-1);
     margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .res-header {
@@ -882,6 +885,12 @@ footer section {
 
 .res-header > h1 {
     color: var(--primary-2);
+    margin-bottom: 8px;
+}
+
+.res-header svg {
+    width: 35px;
+    height: 35px;
 }
 
 .steps {
@@ -906,6 +915,7 @@ footer section {
 #on {
     border-style: solid;
     border-color: var(--primary-2);
+    transition: ease-in-out 0s 450ms;
 }
 
 #complete {
@@ -914,22 +924,45 @@ footer section {
 
 .steps > hr {
     position: absolute;
-    width: 95%;
     height: 4px;
     border: none;
     transform: translate(2.5%, 25px);
 }
 
-.step-1 {
+.hr-bg {
+    width: 95%;
     background: var(--highlight-1);
 }
 
+.hr-fill {
+    background: var(--primary-2);
+    transition: width ease-in-out 500ms;
+}
+
+.step-1 {
+    width: 1%;
+}
+
 .step-2 {
-    background: linear-gradient(to right, var(--primary-2) 0%, var(--primary-2) 50%, var(--highlight-1) 50%, var(--highlight-1) 100%);
+    width: 50%;
 }
 
 .step-3 {
-    background: var(--primary-2);
+    width: 95%;
+}
+
+.step-names {
+    display: flex;
+    justify-content: space-between;
+    width: 965px;
+    transform: translateX(-27.5px);
+    margin-top: 8px;
+}
+
+.step-names > p {
+    color: var(--highlight-1);
+    width: 110px;
+    text-align: center;
 }
 
 /* ---------- calendar ---------- */
