@@ -1,6 +1,6 @@
 import { useState } from "react";
-import {ReactComponent as LeftArrowSVG} from '../SVGs/left-arrow.svg';
-import {ReactComponent as RightArrowSVG} from '../SVGs/right-arrow.svg';
+import {ReactComponent as LeftArrowSVG} from '../../SVGs/left-arrow.svg';
+import {ReactComponent as RightArrowSVG} from '../../SVGs/right-arrow.svg';
 
 function Calendar() {
     const allDays = Array.from({length: 31}, (_, i) => i + 1);

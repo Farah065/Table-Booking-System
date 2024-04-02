@@ -1,7 +1,15 @@
-import Button from './Button';
 import HeroImage from '../Images/hero-image.jpg';
+import { Link } from 'react-router-dom';
 
 function Hero() {
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }
+
     return (
         <article className="hero-container">
             <div className="hero">
@@ -11,7 +19,9 @@ function Hero() {
                         <h2>Chicago</h2>
                     </header>
                     <p>We are a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-                    <Button label="Reserve a Table" />
+                    <button className="btn link-btn" onClick={scrollToTop}>
+                        <Link to="/reservations" className="btn-link">Reserve a Table</Link>
+                    </button>
                 </div>
                 <img src={HeroImage} alt="chef holding a tray with four sandwiches" width={330} height={374} />
             </div>

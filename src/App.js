@@ -6,8 +6,7 @@ import Specials from './Components/Specials';
 import Testimonials from './Components/Testimonials';
 import About from './Components/About';
 import Footer from './Components/Footer';
-import ResHeader from './Components/ResHeader';
-import ResDetails from './Components/ResDetails';
+import Reservation from './Components/Reservation';
 
 function App() {
   function landing() {
@@ -21,15 +20,6 @@ function App() {
       );
   }
 
-  function reservation() {
-      return (
-          <>
-              <ResHeader />
-              <ResDetails />
-          </>
-      );
-  }
-
   return (
     <>
       <Navbar />
@@ -37,7 +27,7 @@ function App() {
           <Route path="/" element={landing()} />
           <Route path="/about" element={landing()} />
           <Route path="/menu" element={landing()} />
-          <Route path="/reservations" element={reservation()} />
+          <Route path="/reservations" element={<Reservation />} />
           <Route path="/order-online" element={landing()} />
           <Route path="/login" element={landing()} />
       </Routes>

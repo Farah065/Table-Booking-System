@@ -1,4 +1,3 @@
-import Button from "./Button";
 import MenuCard from "./MenuCard";
 import greekSaladImg from '../Images/greek-salad.jpg';
 import bruschettaImg from '../Images/bruschetta.jpg';
@@ -31,7 +30,7 @@ function Specials() {
         <article className="specials">
             <header>
                 <h1>Specials</h1>
-                <Button label="Online Menu" />
+                <button className="btn primary-btn">Online Menu</button>
             </header>
             <div className="card-group">
                 <MenuCard info={greekSalad} />
