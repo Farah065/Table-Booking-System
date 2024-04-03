@@ -31,12 +31,6 @@ function Reservation() {
                 </div>
             </header>
             <ResForm step={step} setStep={setStep} />
-            {/* <div className="btn-container">
-                {step <= 3 && <button className="btn primary-btn" onClick={handleClick}>{step === 3 ? "Submit" : "Next"}</button>}
-                {step > 3 && <button className="btn link-btn" onClick={handleClick}>
-                    <Link to="/" className="btn-link">Home</Link>
-                </button>}
-            </div> */}
         </section>
     );
 }

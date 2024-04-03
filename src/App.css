@@ -946,6 +946,14 @@ footer section {
     position: relative;
 }
 
+.steps h2 {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .steps > div {
     height: 50px;
     width: 50px;
@@ -1040,7 +1048,7 @@ footer section {
     margin: 24px 0;
 }
 
-#confirmation svg {
+#confirmation h3 + svg {
     width: 48px;
     height: 48px;
     margin: 24px 0 0 0;
@@ -1050,6 +1058,18 @@ footer section {
     padding-bottom: 32px;
     border-bottom: solid;
     border-color: var(--highlight-1);
+}
+
+#personal-info > .btn-group {
+    padding-bottom: 0px;
+    border-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+}
+
+#personal-info > div {
+    padding-bottom: 24px;
 }
 
 .res-form h3, .res-form label {
@@ -1264,6 +1284,10 @@ input[type="text"] {
     display: flex;
     gap: 6px;
     margin-top: 16px;
+}
+
+#confirmation .error {
+    justify-content: center;
 }
 
 .error > svg {

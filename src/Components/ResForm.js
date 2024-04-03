@@ -20,14 +20,28 @@ function ResForm(props) {
     const [children, setChildren] = useState(0);
     const [occasion, setOccasion] = useState("");
     const [occasionOther, setOccasionOther] = useState("");
-    const [filled, setFilled] = useState({location: null, date: null, to: null, from: null, occasion: null, other: null});
+    const [filled, setFilled] = useState({location: null, date: null, to: null, from: null, occasion: null, other: null,
+                                            name: null, email: null, phone: null, code: null});
     const [invalid, setInvalid] = useState([false, false]);
+    const [personalInfo, setPersonalInfo] = useState({name: "", email: "", phone: ""});
+    const [validInfo, setValidInfo] = useState({email: true, phone: true, code: true});
+    const [code, setCode] = useState("");
 
     const occasionText = useRef();
+    const top = useRef();
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const phoneRef = useRef();
+    const codeRef = useRef();
+
+    const isValidEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const isValidPhone = /(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/g;
+    const isValidCode = /^\d{3}-\d{3}-\d{3}$/;
+
 
     const [state, dispatch] = useReducer(reducer, {
-        from: ["18:00", "19:00", "20:00", "21:00", "22:00"],
-        to: ["19:00", "20:00", "21:00", "22:00", "23:00"]
+        from: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"],
+        to: ["18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
     });
 
     function reducer(state, action){
@@ -35,14 +49,14 @@ function ResForm(props) {
         switch(action.type){
             case "weekday":
                 times = {
-                    from: ["18:00", "19:00", "20:00", "21:00", "22:00"],
-                    to: ["19:00", "20:00", "21:00", "22:00", "23:00"]
+                    from: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"],
+                    to: ["18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
                 };
                 break;
             case "weekend":
                 times = {
-                    from: ["19:00", "20:00", "21:00"],
-                    to: ["20:00", "21:00", "22:00"]
+                    from: ["18:00", "19:00", "20:00", "21:00"],
+                    to: ["19:00", "20:00", "21:00", "22:00"]
                 };
                 break;
             default:
@@ -114,6 +128,150 @@ function ResForm(props) {
         }
     }
 
+    const onNameChange = e => {
+        nameRef.current.classList.remove("invalid-txt");
+        setPersonalInfo(prevState => ({
+            ...prevState,
+            name: e.target.value
+        }));
+
+        if(e.target.value !== ""){
+            setFilled(prevState => ({
+                ...prevState,
+                name: true
+            }));
+        }
+    }
+    const onNameBlur = e => {
+        if(personalInfo.name === ""){
+            nameRef.current.classList.add("invalid-txt");
+            setFilled(prevState => ({
+                ...prevState,
+                name: false
+            }));
+        }
+    }
+
+    const onEmailChange = e => {
+        emailRef.current.classList.remove("invalid-txt");
+        setPersonalInfo(prevState => ({
+            ...prevState,
+            email: e.target.value
+        }));
+        setValidInfo(prevState => ({
+            ...prevState,
+            email: true
+        }));
+
+        if(e.target.value !== ""){
+            setFilled(prevState => ({
+                ...prevState,
+                email: true
+            }));
+        }
+    }
+    const onEmailBlur = e => {
+        if(personalInfo.email === ""){
+            emailRef.current.classList.add("invalid-txt");
+            setFilled(prevState => ({
+                ...prevState,
+                email: false
+            }));
+        }
+        else if(!personalInfo.email.match(isValidEmail)){
+            emailRef.current.classList.add("invalid-txt");
+            setValidInfo(prevState => ({
+                ...prevState,
+                email: false
+            }));
+        }
+        else{
+            setValidInfo(prevState => ({
+                ...prevState,
+                email: true
+            }));
+        }
+    }
+
+    const onPhoneChange = e => {
+        phoneRef.current.classList.remove("invalid-txt");
+        setPersonalInfo(prevState => ({
+            ...prevState,
+            phone: e.target.value
+        }));
+        setValidInfo(prevState => ({
+            ...prevState,
+            phone: true
+        }));
+
+        if(e.target.value !== ""){
+            setFilled(prevState => ({
+                ...prevState,
+                phone: true
+            }));
+        }
+    }
+    const onPhoneBlur = e => {
+        if(personalInfo.phone === ""){
+            phoneRef.current.classList.add("invalid-txt");
+            setFilled(prevState => ({
+                ...prevState,
+                phone: false
+            }));
+        }
+        else if(!personalInfo.phone.match(isValidPhone)){
+            phoneRef.current.classList.add("invalid-txt");
+            setValidInfo(prevState => ({
+                ...prevState,
+                phone: false
+            }));
+        }
+        else{
+            setValidInfo(prevState => ({
+                ...prevState,
+                phone: true
+            }));
+        }
+    }
+
+    const onCodeChange = e => {
+        codeRef.current.classList.remove("invalid-txt");
+        setCode(e.target.value);
+        setValidInfo(prevState => ({
+            ...prevState,
+            code: true
+        }));
+
+        if(e.target.value !== ""){
+            setFilled(prevState => ({
+                ...prevState,
+                code: true
+            }));
+        }
+    }
+    const onCodeBlur = e => {
+        if(code === ""){
+            codeRef.current.classList.add("invalid-txt");
+            setFilled(prevState => ({
+                ...prevState,
+                code: false
+            }));
+        }
+        else if(!code.match(isValidCode)){
+            codeRef.current.classList.add("invalid-txt");
+            setValidInfo(prevState => ({
+                ...prevState,
+                code: false
+            }));
+        }
+        else{
+            setValidInfo(prevState => ({
+                ...prevState,
+                code: true
+            }));
+        }
+    }
+
     function checkTimeRange(item, type){
         if((type === "To" && from !== "--:--") || (type === "From" && to !== "--:--")){
             if(type === "To" && parseInt(item.substring(0, 2)) <= parseInt(from.substring(0, 2))){
@@ -172,12 +330,69 @@ function ResForm(props) {
             }));
             occasionText.current.classList.add("invalid-txt");
         }
-        scrollToTop();
+
 
         if(filled.location === true && filled.date === true && filled.from === true && filled.to === true && filled.occasion === true){
             if((occasion === "Other" && filled.other === true) || occasion !== "Other"){
+                scrollToTop(0);
                 handleClick();
             }
+        }
+        else{
+            scrollToTop(90);
+        }
+    }
+
+    function checkPersonalDetails(e){
+        e.preventDefault();
+        if(filled.name === null){
+            nameRef.current.classList.add("invalid-txt");
+            setFilled(prevState => ({
+                ...prevState,
+                name: false
+            }));
+        }
+        if(filled.email === null){
+            emailRef.current.classList.add("invalid-txt");
+            setFilled(prevState => ({
+                ...prevState,
+                email: false
+            }));
+        }
+        if(filled.phone === null){
+            phoneRef.current.classList.add("invalid-txt");
+            setFilled(prevState => ({
+                ...prevState,
+                phone: false
+            }));
+        }
+
+        if(filled.name === true && filled.email === true && filled.phone === true &&
+            personalInfo.email.match(isValidEmail) && personalInfo.phone.match(isValidPhone)){
+            scrollToTop(0);
+            handleClick();
+        }
+        else{
+            scrollToTop(90);
+        }
+    }
+
+    function checkCode(e){
+        e.preventDefault();
+        if(filled.code === null){
+            codeRef.current.classList.add("invalid-txt");
+            setFilled(prevState => ({
+                ...prevState,
+                code: false
+            }));
+        }
+
+        if(code.match(isValidCode)){
+            scrollToTop(0);
+            handleClick();
+        }
+        else{
+            scrollToTop(90);
         }
     }
 
@@ -185,19 +400,30 @@ function ResForm(props) {
         props.setStep(props.step + 1);
     }
 
-    function scrollToTop(){
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth",
-        });
+    function scrollToTop(val){
+        if(val !== 0){
+            const scrollPosition = top.current.offsetTop - val;
+            if(window.scrollY > scrollPosition){
+                window.scrollTo({
+                    top: scrollPosition,
+                    behavior: 'smooth',
+                });
+            }
+        }
+        else{
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            });
+        }
     }
 
     return (
         <>
             { props.step === 1 &&
                 <form className="res-form">
-                    <div>
+                    <div ref={top}>
                         <label className="required">Branch</label>
                         <div className="locations">
                             <Location loc={loc1} setter={setLocation} val={location} setFilled={setFilled} />
@@ -276,30 +502,56 @@ function ResForm(props) {
                 </form>
             }
             { props.step === 2 &&
-                <form className="res-form" id="personal-info">
+                <form ref={top} className="res-form" id="personal-info">
                     <div>
                         <label className="required" id="name">Name</label>
-                        <input htmlFor="name" type="text" placeholder="Type here..."/>
+                        <input ref={nameRef} htmlFor="name" type="text" placeholder="Type here..." value={personalInfo.name} onChange={onNameChange} onBlur={onNameBlur} />
+                        {filled.name === false &&
+                        <div className="error">
+                            <ErrorSVG/>
+                            <p className="error-msg">Please enter your name</p>
+                        </div>}
                     </div>
                     <div>
                         <label className="required" id="email">Email</label>
-                        <input htmlFor="email" type="text" placeholder="Type here..."/>
+                        <input ref={emailRef} htmlFor="email" type="text" placeholder="Type here..." value={personalInfo.email} onChange={onEmailChange} onBlur={onEmailBlur} />
+                        {(filled.email === false || validInfo.email === false) &&
+                        <div className="error">
+                            <ErrorSVG/>
+                            {filled.email === false && <p className="error-msg">Please enter your email</p>}
+                            {validInfo.email === false && <p className="error-msg">Invalid email</p>}
+                        </div>}
                     </div>
                     <div>
                         <label className="required" id="phone">Phone</label>
-                        <input htmlFor="phone" type="text" placeholder="Type here..."/>
+                        <input ref={phoneRef} htmlFor="phone" type="text" placeholder="Type here..." value={personalInfo.phone} onChange={onPhoneChange} onBlur={onPhoneBlur} />
+                        {(filled.phone === false || validInfo.phone === false) &&
+                        <div className="error">
+                            <ErrorSVG/>
+                            {filled.phone === false && <p className="error-msg">Please enter your phone number</p>}
+                            {validInfo.phone === false && <p className="error-msg">Invalid phone number</p>}
+                        </div>}
                     </div>
-                    <button className="btn primary-btn" onClick={handleClick}>Next</button>
+                    <div className="btn-group">
+                        <button className="btn primary-btn" onClick={() => props.setStep(props.step - 1)}>Back</button>
+                        <button className="btn primary-btn" onClick={checkPersonalDetails}>Next</button>
+                    </div>
                 </form>
             }
             { props.step === 3 &&
-                <form className="res-form" id="confirmation">
+                <form ref={top} className="res-form" id="confirmation">
                     <div>
                         <img src={Lemon} alt="Little Lemon's lemon icon" />
                         <h3>Enter the code<br/>sent to your email</h3>
-                        <input type="text" placeholder="XXX-XXX-XXX"/>
+                        <input ref={codeRef} type="text" placeholder="XXX-XXX-XXX" value={code} onChange={onCodeChange} onBlur={onCodeBlur} />
+                        {(filled.code === false || validInfo.code === false) &&
+                        <div className="error">
+                            <ErrorSVG/>
+                            {filled.code === false && <p className="error-msg">Please enter the code</p>}
+                            {validInfo.code === false && <p className="error-msg">Invalid code</p>}
+                        </div>}
                     </div>
-                    <button className="btn primary-btn" onClick={handleClick}>Submit</button>
+                    <button className="btn primary-btn" onClick={checkCode}>Submit</button>
                 </form>
             }
             { props.step > 3 &&
@@ -309,7 +561,7 @@ function ResForm(props) {
                         <h3>Your reservation has been confirmed, thank you!</h3>
                         <CheckmarkSVG />
                     </div>
-                    <button className="btn link-btn" onClick={handleClick}>
+                    <button className="btn link-btn" onClick={() => scrollToTop(0)}>
                         <Link to="/" className="btn-link">Home</Link>
                     </button>
                 </div>
