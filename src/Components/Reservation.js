@@ -1,19 +1,9 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
 import ResForm from './ResForm';
 import {ReactComponent as CheckmarkSVG} from '../SVGs/checkmark.svg';
 
 function Reservation() {
     const [step, setStep] = useState(1);
-
-    function handleClick() {
-        setStep(step + 1);
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth",
-        });
-    }
 
     return (
         <section className="reservation">
@@ -40,13 +30,13 @@ function Reservation() {
                     </div>
                 </div>
             </header>
-            <ResForm step={step} />
-            <div className="btn-container">
+            <ResForm step={step} setStep={setStep} />
+            {/* <div className="btn-container">
                 {step <= 3 && <button className="btn primary-btn" onClick={handleClick}>{step === 3 ? "Submit" : "Next"}</button>}
                 {step > 3 && <button className="btn link-btn" onClick={handleClick}>
                     <Link to="/" className="btn-link">Home</Link>
                 </button>}
-            </div>
+            </div> */}
         </section>
     );
 }

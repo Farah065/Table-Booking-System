@@ -918,10 +918,9 @@ footer section {
     justify-content: center;
 }
 
-.btn-container {
-    display: flex;
-    justify-content: center;
-    margin: 24px 0 48px 0;
+.res-form .btn {
+    align-self: center;
+    margin-bottom: 36px;
 }
 
 .res-header {
@@ -1022,6 +1021,11 @@ footer section {
     gap: 32px;
 }
 
+.required:after {
+    content:" *";
+    color: var(--error);
+}
+
 #personal-info {
     max-width: 512px;
 }
@@ -1078,7 +1082,7 @@ input[type="radio"] {
     height: 1em;
     border: 0.15em solid currentColor;
     border-radius: 50%;
-    transform: translateY(1.15em);
+    transform: translateY(1.25em);
     display: grid;
     place-content: center;
     cursor: pointer;
@@ -1133,7 +1137,7 @@ textArea::-webkit-scrollbar-track {
 input[type="text"] {
     background-color: var(--highlight-1);
     border-radius: 8px;
-    border: none;
+    border:none;
     outline-color: var(--highlight-2-trans);
     padding: 6px 12px;
     box-sizing: border-box;
@@ -1149,6 +1153,12 @@ input[type="text"] {
     width: 150px;
     margin-top: 24px;
     text-align: center;
+}
+
+.res-form .invalid-txt, .res-form .invalid-txt:focus {
+    outline-style: solid;
+    outline-color: var(--error-trans);
+    outline-width: 2px;
 }
 
 .date-and-time {
@@ -1248,6 +1258,32 @@ input[type="text"] {
 
 .selected-branch {
     border-color: var(--primary-1);
+}
+
+.error {
+    display: flex;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.error > svg {
+    width: 16px;
+    height: 16px;
+}
+
+.error-msg {
+    color: var(--error);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.dropdowns + .error {
+    position: absolute;
+    top: 56px;
+}
+
+.times {
+    position: relative;
 }
 
 /* ---------- calendar ---------- */
@@ -1390,6 +1426,7 @@ input[type="text"] {
     background-color: var(--highlight-1);
     overflow: none;
     border-radius: 12px;
+    z-index: 2;
 }
 
 .menu > li {

@@ -2,14 +2,13 @@ import { useState } from "react";
 import {ReactComponent as LeftArrowSVG} from '../../SVGs/left-arrow.svg';
 import {ReactComponent as RightArrowSVG} from '../../SVGs/right-arrow.svg';
 
-function Calendar() {
+function Calendar(props) {
     const allDays = Array.from({length: 31}, (_, i) => i + 1);
     
     const [currYear, setCurrYear] = useState(new Date().getFullYear());
     const [currMonth, setCurrMonth] = useState(new Date().getMonth() + 1);
     const [currDays, setCurrDays] = useState([getDays(currMonth - 1), getDays(currMonth), getDays(currMonth + 1)]);
     const [currWeekDay, setCurrWeekDay] = useState(getFirstWeekDay(currMonth, currYear));
-    const [currSelected, setCurrSelected] = useState([-1, -1, -1]);
     
     function getDays(month) { // returns an array containing all days in a specific month
         var year = currYear;
@@ -73,7 +72,7 @@ function Calendar() {
         var y = new Date().getFullYear();
         var d = new Date().getDate();
         
-        return ( currSelected[0] === day && currSelected[1] === currMonth && currSelected[2] === currYear ?
+        return (props.currSelected[0] === day && props.currSelected[1] === currMonth && props.currSelected[2] === currYear ?
             <div key={index} className="calendar-day" id="selected">
                 <p>{day}</p>
             </div> :
@@ -135,7 +134,19 @@ function Calendar() {
 
     // handles selecting a reservation day
     function selectDay(day) {
-        setCurrSelected([day, currMonth, currYear]);
+        var d = new Date();
+        d.setMonth(currMonth);
+        d.setDate(day);
+        d.setFullYear(currYear);
+        var weekday = d.getDay() === 1 || d.getDay() === 2 ? "weekend" : "weekday";
+        props.dispatch({type: weekday});
+
+        props.setCurrSelected([day, currMonth, currYear]);
+
+        props.setFilled(prevState => ({
+            ...prevState,
+            date: true
+        }));
     }
 
     return(

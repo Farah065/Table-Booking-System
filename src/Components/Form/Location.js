@@ -4,11 +4,15 @@ import {ReactComponent as UnfilledStar} from '../../SVGs/star-unfilled.svg';
 function Location(props) {
     function selectLocation() {
         props.setter(props.loc.branch);
+        props.setFilled(prevState => ({
+            ...prevState,
+            location: true
+        }));
     }
 
     const stars = () => {
-        return props.loc.stars.map(item => (
-            item ? <FilledStar key={item} /> : <UnfilledStar key={item} />
+        return props.loc.stars.map((item, index) => (
+            item ? <FilledStar key={index} /> : <UnfilledStar key={item} />
         ));
     }
 
