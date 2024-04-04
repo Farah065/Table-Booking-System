@@ -1,4 +1,4 @@
-import { useReducer, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Calendar from './Form/Calendar';
 import Dropdown from './Form/Dropdown';
@@ -10,19 +10,19 @@ import Loc3 from '../Images/branch-3.jpg';
 import Lemon from '../Images/lemon.png';
 import {ReactComponent as CheckmarkSVG} from '../SVGs/circled-checkmark.svg';
 import {ReactComponent as ErrorSVG} from '../SVGs/error.svg';
+import { fetchAPI } from '../mockAPI';
+import { submitAPI } from '../mockAPI';
 
 function ResForm(props) {
     const [location, setLocation] = useState("");
     const [date, setDate] = useState([-1, -1, -1]);
-    const [to, setTo] = useState("--:--");
-    const [from, setFrom] = useState("--:--");
+    const [time, setTime] = useState("--:--");
     const [adults, setAdults] = useState(1);
     const [children, setChildren] = useState(0);
     const [occasion, setOccasion] = useState("");
     const [occasionOther, setOccasionOther] = useState("");
-    const [filled, setFilled] = useState({location: null, date: null, to: null, from: null, occasion: null, other: null,
+    const [filled, setFilled] = useState({location: null, date: null, time: null, occasion: null, other: null,
                                             name: null, email: null, phone: null, code: null});
-    const [invalid, setInvalid] = useState([false, false]);
     const [personalInfo, setPersonalInfo] = useState({name: "", email: "", phone: ""});
     const [validInfo, setValidInfo] = useState({email: true, phone: true, code: true});
     const [code, setCode] = useState("");
@@ -39,37 +39,48 @@ function ResForm(props) {
     const isValidCode = /^\d{3}-\d{3}-\d{3}$/;
 
 
-    const [state, dispatch] = useReducer(reducer, {
-        from: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"],
-        to: ["18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
-    });
+    const [availableTimes, setAvailableTimes] = useState([]);
 
-    function reducer(state, action){
-        var times;
-        switch(action.type){
-            case "weekday":
-                times = {
-                    from: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"],
-                    to: ["18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
-                };
-                break;
-            case "weekend":
-                times = {
-                    from: ["18:00", "19:00", "20:00", "21:00"],
-                    to: ["19:00", "20:00", "21:00", "22:00"]
-                };
-                break;
-            default:
-                times = state;
-        }
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
 
-        if(!times.from.includes(from))
-            setFrom("--:--");
-        if(!times.to.includes(to))
-            setTo("--:--");
-
-        return times;
+        return `${year}-${month}-${day}`;
     }
+
+    useEffect(() => {
+        var tmp = new Date();
+        tmp.setDate(date[0]);
+        tmp.setMonth(date[1] - 1);
+        tmp.setFullYear(date[2]);
+        var d = formatDate(tmp);
+        
+        const fetchReservationTimes = async () => {
+            if(filled.date !== null){
+                try {
+                    setAvailableTimes([]);
+                    var val = time;
+                    if(filled.date !== null)
+                        setTime("loading...");
+                    const times = await fetchAPI(d);
+                    
+                    setAvailableTimes(times);
+                    if(!times.includes(val)){
+                        setTime("--:--");
+                    }
+                    else{
+                        setTime(val);
+                    }
+                } catch (error) {
+                    console.error('Error fetching reservation times:', error);
+                }
+            }
+        };
+        
+        fetchReservationTimes();
+
+    }, [date]);
 
     const loc1 = {
         src: Loc1,
@@ -272,23 +283,6 @@ function ResForm(props) {
         }
     }
 
-    function checkTimeRange(item, type){
-        if((type === "To" && from !== "--:--") || (type === "From" && to !== "--:--")){
-            if(type === "To" && parseInt(item.substring(0, 2)) <= parseInt(from.substring(0, 2))){
-                setInvalid([true, true]);
-                return true;
-            }
-            else if(type === "From" && parseInt(to.substring(0, 2)) <= parseInt(item.substring(0, 2))){
-                setInvalid([true, true]);
-                return true;
-            }
-            else{
-                setInvalid([false, false]);
-                return false;
-            }
-        }
-    }
-
     function checkResDetails(e){
         e.preventDefault();
         if(filled.location === null){
@@ -303,19 +297,11 @@ function ResForm(props) {
                 date: false
             }));
         }
-        if(filled.to === null){
+        if(filled.time === null){
             setFilled(prevState => ({
                 ...prevState,
-                to: false
+                time: false
             }));
-            setInvalid(([v, _]) => [v, true]);
-        }
-        if(filled.from === null){
-            setFilled(prevState => ({
-                ...prevState,
-                from: false
-            }));
-            setInvalid(([_, v]) => [true, v]);
         }
         if(filled.occasion === null){
             setFilled(prevState => ({
@@ -332,7 +318,7 @@ function ResForm(props) {
         }
 
 
-        if(filled.location === true && filled.date === true && filled.from === true && filled.to === true && filled.occasion === true){
+        if(filled.location === true && filled.date === true && filled.time === true && filled.occasion === true){
             if((occasion === "Other" && filled.other === true) || occasion !== "Other"){
                 scrollToTop(0);
                 handleClick();
@@ -388,8 +374,7 @@ function ResForm(props) {
         }
 
         if(code.match(isValidCode)){
-            scrollToTop(0);
-            handleClick();
+            handleSubmit();
         }
         else{
             scrollToTop(90);
@@ -399,6 +384,35 @@ function ResForm(props) {
     function handleClick(){
         props.setStep(props.step + 1);
     }
+
+    const handleSubmit = async () => {
+        var tmp = new Date();
+        tmp.setDate(date[0]);
+        tmp.setMonth(date[1] - 1);
+        tmp.setFullYear(date[2]);
+        var d = formatDate(tmp);
+        
+        try {
+          await submitAPI({
+            location: location,
+            date: d,
+            time: time,
+            adults: adults,
+            children: children,
+            occasion: occasion,
+            occasionOther: occasionOther,
+            name: personalInfo.name,
+            email: personalInfo.email,
+            phone: personalInfo.phone,
+            code: code
+          });
+      
+          props.setStep(props.step + 1);
+        } catch (error) {
+          console.error('Error submitting form:', error);
+        }
+      };
+      
 
     function scrollToTop(val){
         if(val !== 0){
@@ -440,7 +454,7 @@ function ResForm(props) {
                         <label className="required">Date & Time</label>
                         <div className="date-and-time">
                             <div>
-                                <Calendar currSelected={date} setCurrSelected={setDate} dispatch={dispatch} setFilled={setFilled} />
+                                <Calendar currSelected={date} setCurrSelected={setDate} setFilled={setFilled} />
                                 {filled.date === false && <div className="error">
                                     <ErrorSVG/>
                                     <p className="error-msg">Please select a date</p>
@@ -449,19 +463,13 @@ function ResForm(props) {
                             <div className="times">
                                 <div className="dropdowns">
                                     <div>
-                                        <h4>From</h4>
-                                        <Dropdown options={state.from} valSetter={setFrom} value={from} setFilled={setFilled} type="From" checkTimeRange={checkTimeRange} invalid={invalid} />
-                                    </div>
-                                    <div>
-                                        <h4>To</h4>
-                                        <Dropdown options={state.to} valSetter={setTo} value={to} setFilled={setFilled} type="To" checkTimeRange={checkTimeRange} invalid={invalid} />
+                                        <h4>Time</h4>
+                                        <Dropdown options={availableTimes} valSetter={setTime} value={time} setFilled={setFilled} filled={filled} />
                                     </div>
                                 </div>
-                                {(filled.from === false || filled.to === false || invalid[0] || invalid[1]) && <div className="error">
+                                {filled.time === false && <div className="error">
                                     <ErrorSVG/>
-                                    <p className="error-msg">
-                                        {(filled.from === false || filled.to === false) ? "Please select a time" : "End time must be after start time"}
-                                    </p>
+                                    <p className="error-msg">Please select a time</p>
                                 </div>}
                             </div>
                         </div>

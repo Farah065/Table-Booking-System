@@ -1310,6 +1310,10 @@ input[type="text"] {
     position: relative;
 }
 
+.times p {
+    text-wrap: nowrap;
+}
+
 /* ---------- calendar ---------- */
 .calendar {
     -moz-user-select: none;

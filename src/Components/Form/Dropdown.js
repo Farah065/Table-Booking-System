@@ -12,19 +12,10 @@ function Dropdown(props) {
         if(open){
             if(props.value === "--:--"){
                 time.current.classList.add("invalid");
-
-                if(props.type === "From"){
-                    props.setFilled(prevState => ({
-                        ...prevState,
-                        from: false
-                    }));
-                }
-                else if(props.type === "To"){
-                    props.setFilled(prevState => ({
-                        ...prevState,
-                        to: false
-                    }));
-                }
+                props.setFilled(prevState => ({
+                    ...prevState,
+                    time: false
+                }));
             }
         }
     };
@@ -32,22 +23,11 @@ function Dropdown(props) {
     const handleMenu = (item) => {
         props.valSetter(item);
         setOpen(false);
-        var invalid = props.checkTimeRange(item, props.type);
-        if(!invalid)
-            time.current.classList.remove("invalid");
 
-        if(props.type === "From"){
-            props.setFilled(prevState => ({
-                ...prevState,
-                from: true
-            }));
-        }
-        else if(props.type === "To"){
-            props.setFilled(prevState => ({
-                ...prevState,
-                to: true
-            }));
-        }
+        props.setFilled(prevState => ({
+            ...prevState,
+            time: true
+        }));
     };
 
     const options = () => {
@@ -62,7 +42,7 @@ function Dropdown(props) {
     <div className="dropdown">
         {!open && <ArrowDown className="dropdown-arrow" onClick={handleOpen} />}
         {open && <ArrowUp className="dropdown-arrow" onClick={handleOpen} />}
-        <button ref={time} className={((props.type === "From" && props.invalid[0]) || (props.type === "To" && props.invalid[1])) ? "dropdown-btn invalid" : "dropdown-btn"} onClick={handleOpen} style={{color: props.value === "--:--" ? '#33333366' :'#333333'}}>{props.value}</button>
+        <button ref={time} className={(props.filled.time === false) ? "dropdown-btn invalid" : "dropdown-btn"} onClick={handleOpen} style={{color: props.value === "--:--" || props.value === "loading..." ? '#33333366' :'#333333'}}>{props.value}</button>
         {open ? (
             <ul className="menu">
                 {options()}

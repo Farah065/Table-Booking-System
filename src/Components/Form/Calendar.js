@@ -134,13 +134,7 @@ function Calendar(props) {
 
     // handles selecting a reservation day
     function selectDay(day) {
-        var d = new Date();
-        d.setMonth(currMonth);
-        d.setDate(day);
-        d.setFullYear(currYear);
-        var weekday = d.getDay() === 1 || d.getDay() === 2 ? "weekend" : "weekday";
-        props.dispatch({type: weekday});
-
+        // props.dispatch();
         props.setCurrSelected([day, currMonth, currYear]);
 
         props.setFilled(prevState => ({
