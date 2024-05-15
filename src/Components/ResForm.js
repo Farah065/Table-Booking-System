@@ -439,16 +439,24 @@ function ResForm(props) {
                 <form className="res-form">
                     <div ref={top}>
                         <label className="required">Branch</label>
-                        <div className="locations">
-                            <Location loc={loc1} setter={setLocation} val={location} setFilled={setFilled} />
-                            <Location loc={loc2} setter={setLocation} val={location} setFilled={setFilled} />
-                            <Location loc={loc3} setter={setLocation} val={location} setFilled={setFilled} />
+                        <div className="loc-container">
+                            <div className="locations">
+                                <div>
+                                    <Location loc={loc1} setter={setLocation} val={location} setFilled={setFilled} />
+                                </div>
+                                <div>
+                                    <Location loc={loc2} setter={setLocation} val={location} setFilled={setFilled} />
+                                </div>
+                                <div>
+                                    <Location loc={loc3} setter={setLocation} val={location} setFilled={setFilled} />
+                                </div>
+                            </div>
+                            {filled.location === false &&
+                            <div className="error">
+                                <ErrorSVG/>
+                                <p className="error-msg">Please select a branch</p>
+                            </div>}
                         </div>
-                        {filled.location === false &&
-                        <div className="error">
-                            <ErrorSVG/>
-                            <p className="error-msg">Please select a branch</p>
-                        </div>}
                     </div>
                     <div>
                         <label className="required">Date & Time</label>

@@ -21,9 +21,11 @@ function Location(props) {
             <div className={props.val === props.loc.branch ? "selected-branch branch" : "branch"}>
                 <img src={props.loc.src} alt={props.loc.alt} onClick={selectLocation} />
             </div>
-            <h4 onClick={selectLocation}>{props.loc.branch}</h4>
-            <div className="stars">  
-                {stars()}
+            <div className="loc-info">
+                <h4 onClick={selectLocation}>{props.loc.branch}</h4>
+                <div className="loc-stars">  
+                    {stars()}
+                </div>
             </div>
         </section>
     );

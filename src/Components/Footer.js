@@ -41,10 +41,10 @@ function Footer() {
                     <header>
                         <h3>Social Media</h3>
                     </header>
-                    <ul>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
+                    <ul className="social-media">
+                        <a href="https://www.facebook.com" target="_blank"><li>Facebook</li></a>
+                        <a href="https://www.instagram.com" target="_blank"><li>Instagram</li></a>
+                        <a href="https://www.twitter.com" target="_blank"><li>Twitter</li></a>
                     </ul>
                 </section>
             </div>
