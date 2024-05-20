@@ -82,7 +82,7 @@ function Calendar(props) {
             <div key={index} className="calendar-day" id="out-of-range">
                 <p>{day}</p>
             </div> :
-            <div key={index} className="calendar-day" id="" onClick={() => selectDay(day)}>
+            <div key={index} className="calendar-day" id="" aria-label="On Click" onClick={() => selectDay(day)}>
                 <p>{day}</p>
             </div>)
         );
@@ -147,11 +147,11 @@ function Calendar(props) {
         <div className="calendar">
             <div className="month-select">
                 <div onClick={decMonth}>
-                    {mIndex === 0 ? <LeftArrowSVG className="arrow arrow-disabled" /> : <LeftArrowSVG className="arrow" /> }
+                    {mIndex === 0 ? <LeftArrowSVG className="arrow arrow-disabled" /> : <LeftArrowSVG className="arrow" aria-label="On Click" /> }
                 </div>
                 <h3>{getMonthName(currMonth) + " " + currYear}</h3>
                 <div onClick={incMonth}>
-                    {mIndex === 1 ? <RightArrowSVG className="arrow arrow-disabled" /> : <RightArrowSVG className="arrow" /> }
+                    {mIndex === 1 ? <RightArrowSVG className="arrow arrow-disabled" /> : <RightArrowSVG className="arrow" aria-label="On Click" /> }
                 </div>
             </div>
             <div className="week-days">

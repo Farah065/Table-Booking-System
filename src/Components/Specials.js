@@ -30,7 +30,7 @@ function Specials() {
         <article className="specials">
             <header>
                 <h1>Specials</h1>
-                <button className="btn primary-btn">Online Menu</button>
+                <button className="btn primary-btn" aria-label="On Click">Online Menu</button>
             </header>
             <div className="card-group">
                 <MenuCard info={greekSalad} />

@@ -19,12 +19,12 @@ function Footer() {
                         <h3>Navigation</h3>
                     </header>
                     <nav className="footer-nav">
-                        <Link to="/" className="nav-item" onClick={scrollToTop}>Home</Link>
-                        <Link to="/about" className="nav-item" onClick={scrollToTop}>About</Link>
-                        <Link to="/menu" className="nav-item" onClick={scrollToTop}>Menu</Link>
-                        <Link to="/reservations" className="nav-item" onClick={scrollToTop}>Reservations</Link>
-                        <Link to="/order-online" className="nav-item" onClick={scrollToTop}>Order Online</Link>
-                        <Link to="/login" className="nav-item" onClick={scrollToTop}>Login</Link>
+                        <Link to="/" className="nav-item" aria-label="On Click" onClick={scrollToTop}>Home</Link>
+                        <Link to="/about" className="nav-item" aria-label="On Click" onClick={scrollToTop}>About</Link>
+                        <Link to="/menu" className="nav-item" aria-label="On Click" onClick={scrollToTop}>Menu</Link>
+                        <Link to="/reservations" className="nav-item" aria-label="On Click" onClick={scrollToTop}>Reservations</Link>
+                        <Link to="/order-online" className="nav-item" aria-label="On Click" onClick={scrollToTop}>Order Online</Link>
+                        <Link to="/login" className="nav-item" aria-label="On Click" onClick={scrollToTop}>Login</Link>
                     </nav>
                 </section>
                 <section>
@@ -42,9 +42,9 @@ function Footer() {
                         <h3>Social Media</h3>
                     </header>
                     <ul className="social-media">
-                        <a href="https://www.facebook.com" target="_blank"><li>Facebook</li></a>
-                        <a href="https://www.instagram.com" target="_blank"><li>Instagram</li></a>
-                        <a href="https://www.twitter.com" target="_blank"><li>Twitter</li></a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="On Click"><li>Facebook</li></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="On Click"><li>Instagram</li></a>
+                        <a href="https://www.twitter.com" target="_blank" rel="noreferrer" aria-label="On Click"><li>Twitter</li></a>
                     </ul>
                 </section>
             </div>

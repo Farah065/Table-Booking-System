@@ -438,8 +438,8 @@ function ResForm(props) {
             { props.step === 1 &&
                 <form className="res-form">
                     <div ref={top}>
-                        <label className="required">Branch</label>
-                        <div className="loc-container">
+                        <label className="required" id="branch">Branch</label>
+                        <div className="loc-container" htmlFor="branch">
                             <div className="locations">
                                 <div>
                                     <Location loc={loc1} setter={setLocation} val={location} setFilled={setFilled} />
@@ -459,8 +459,8 @@ function ResForm(props) {
                         </div>
                     </div>
                     <div>
-                        <label className="required">Date & Time</label>
-                        <div className="date-and-time">
+                        <label className="required" id="date-and-time">Date & Time</label>
+                        <div className="date-and-time" htmlFor="date-and-time">
                             <div>
                                 <Calendar currSelected={date} setCurrSelected={setDate} setFilled={setFilled} />
                                 {filled.date === false && <div className="error">
@@ -483,8 +483,8 @@ function ResForm(props) {
                         </div>
                     </div>
                     <div>
-                        <label className="required">Number of Guests</label>
-                        <div className="counters-container">
+                        <label className="required" id="guests">Number of Guests</label>
+                        <div className="counters-container" htmlFor="guests">
                             <Counter val={adults} setter={setAdults} title="Adults" />
                             <Counter val={children} setter={setChildren} title="Children" />
                         </div>
@@ -514,7 +514,7 @@ function ResForm(props) {
                             <textarea id="special-requests" placeholder="Type here..." />
                         </div>
                     </div>
-                    <button className="btn primary-btn" onClick={checkResDetails}>Next</button>
+                    <button className="btn primary-btn" aria-label="On Click" onClick={checkResDetails}>Next</button>
                 </form>
             }
             { props.step === 2 &&
@@ -550,7 +550,7 @@ function ResForm(props) {
                     </div>
                     <div className="btn-group">
                         <button className="btn primary-btn" onClick={() => props.setStep(props.step - 1)}>Back</button>
-                        <button className="btn primary-btn" onClick={checkPersonalDetails}>Next</button>
+                        <button className="btn primary-btn" aria-label="On Click" onClick={checkPersonalDetails}>Next</button>
                     </div>
                 </form>
             }
@@ -567,7 +567,7 @@ function ResForm(props) {
                             {validInfo.code === false && <p className="error-msg">Invalid code</p>}
                         </div>}
                     </div>
-                    <button className="btn primary-btn" onClick={checkCode}>Submit</button>
+                    <button className="btn primary-btn" aria-label="On Click" onClick={checkCode}>Submit</button>
                 </form>
             }
             { props.step > 3 &&
@@ -578,7 +578,7 @@ function ResForm(props) {
                         <CheckmarkSVG />
                     </div>
                     <button className="btn link-btn" onClick={() => scrollToTop(0)}>
-                        <Link to="/" className="btn-link">Home</Link>
+                        <Link to="/" className="btn-link" aria-label="On Click">Home</Link>
                     </button>
                 </div>
             }

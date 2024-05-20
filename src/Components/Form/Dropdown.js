@@ -33,7 +33,7 @@ function Dropdown(props) {
     const options = () => {
         return props.options.map(item => (
             <li key={item} className="menu-item">
-                <button type="button" onClick={() => handleMenu(item)}>{item}</button>
+                <button type="button" aria-label="On Click" onClick={() => handleMenu(item)}>{item}</button>
             </li>
         ));
     }
@@ -42,7 +42,13 @@ function Dropdown(props) {
     <div className="dropdown">
         {!open && <ArrowDown className="dropdown-arrow" onClick={handleOpen} />}
         {open && <ArrowUp className="dropdown-arrow" onClick={handleOpen} />}
-        <button ref={time} className={(props.filled.time === false) ? "dropdown-btn invalid" : "dropdown-btn"} onClick={handleOpen} style={{color: props.value === "--:--" || props.value === "loading..." ? '#33333366' :'#333333'}}>{props.value}</button>
+        <button
+            ref={time}
+            aria-label="On Click"
+            className={(props.filled.time === false) ? "dropdown-btn invalid" : "dropdown-btn"}
+            onClick={handleOpen} style={{color: props.value === "--:--" || props.value === "loading..." ? '#33333366' :'#333333'}}>
+                {props.value}
+        </button>
         {open ? (
             <ul className="menu">
                 {options()}

@@ -42,19 +42,19 @@ function Navbar() {
             <div className="nav-container nav-container-large">
                 <img src={LogoSmall} alt="small version of the little lemon logo" width={140} />
                 <nav className="nav">
-                    <Link to="/" className="nav-item" onClick={scrollToTop}>HOME</Link>
-                    <Link to="/about" className="nav-item" onClick={scrollToTop}>ABOUT</Link>
-                    <Link to="/menu" className="nav-item" onClick={scrollToTop}>MENU</Link>
-                    <Link to="/reservations" className="nav-item" onClick={scrollToTop}>RESERVATIONS</Link>
-                    <Link to="/order-online" className="nav-item" onClick={scrollToTop}>ORDER ONLINE</Link>
-                    <Link to="/login" className="nav-item" onClick={scrollToTop}>LOGIN</Link>
+                    <Link to="/" className="nav-item" aria-label="On Click" onClick={scrollToTop}>HOME</Link>
+                    <Link to="/about" className="nav-item" aria-label="On Click" onClick={scrollToTop}>ABOUT</Link>
+                    <Link to="/menu" className="nav-item" aria-label="On Click" onClick={scrollToTop}>MENU</Link>
+                    <Link to="/reservations" className="nav-item" aria-label="On Click" onClick={scrollToTop}>RESERVATIONS</Link>
+                    <Link to="/order-online" className="nav-item" aria-label="On Click" onClick={scrollToTop}>ORDER ONLINE</Link>
+                    <Link to="/login" className="nav-item" aria-label="On Click" onClick={scrollToTop}>LOGIN</Link>
                 </nav>
             </div>
             <NavOverlay isOpen={isOpen} setOpen={setOpen} />
             <div className="nav-container nav-container-small">
               <div>
                 <img src={LogoSmall} alt="small version of the little lemon logo" width={140} />
-                <Hamburger toggled={isOpen} toggle={setOpen} color="#333333" rounded label="show navbar" />
+                <Hamburger aria-label="On Click" toggled={isOpen} toggle={setOpen} color="#333333" rounded label="show navbar" />
               </div>
             </div>
         </div>

@@ -36,9 +36,9 @@ function Counter(props) {
         <div className="counter">
             <h4>{props.title}</h4>
             <div>
-                <p ref={sub} className="change-counter disable" onClick={dec}>−</p>
+                <p ref={sub} className="change-counter disable" aria-label="On Click" onClick={dec}>−</p>
                 <p>{props.val}</p>
-                <p ref={add} className="change-counter" onClick={inc}>+</p>
+                <p ref={add} className="change-counter" aria-label="On Click" onClick={inc}>+</p>
             </div>
         </div>
     );

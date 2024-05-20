@@ -19,7 +19,7 @@ function Hero() {
                         <h2>Chicago</h2>
                     </header>
                     <p>We are a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-                    <button className="btn link-btn" onClick={scrollToTop}>
+                    <button className="btn link-btn" aria-label="On Click" onClick={scrollToTop}>
                         <Link to="/reservations" className="btn-link">Reserve a Table</Link>
                     </button>
                 </div>

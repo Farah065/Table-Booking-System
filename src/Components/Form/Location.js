@@ -22,7 +22,7 @@ function Location(props) {
                 <img src={props.loc.src} alt={props.loc.alt} onClick={selectLocation} />
             </div>
             <div className="loc-info">
-                <h4 onClick={selectLocation}>{props.loc.branch}</h4>
+                <h4 aria-label="On Click" onClick={selectLocation}>{props.loc.branch}</h4>
                 <div className="loc-stars">  
                     {stars()}
                 </div>

@@ -23,12 +23,12 @@ function NavOverlay(props) {
     return (
         <div className="nav-container-overlay" ref={navbar}>
             <nav className="nav-overlay">
-                <Link to="/" className="nav-item-overlay" onClick={scrollToTop}>HOME</Link>
-                <Link to="/about" className="nav-item-overlay" onClick={scrollToTop}>ABOUT</Link>
-                <Link to="/menu" className="nav-item-overlay" onClick={scrollToTop}>MENU</Link>
-                <Link to="/reservations" className="nav-item-overlay" onClick={scrollToTop}>RESERVATIONS</Link>
-                <Link to="/order-online" className="nav-item-overlay" onClick={scrollToTop}>ORDER ONLINE</Link>
-                <Link to="/login" className="nav-item-overlay" onClick={scrollToTop}>LOGIN</Link>
+                <Link to="/" className="nav-item-overlay" aria-label="On Click" onClick={scrollToTop}>HOME</Link>
+                <Link to="/about" className="nav-item-overlay" aria-label="On Click" onClick={scrollToTop}>ABOUT</Link>
+                <Link to="/menu" className="nav-item-overlay" aria-label="On Click" onClick={scrollToTop}>MENU</Link>
+                <Link to="/reservations" className="nav-item-overlay" aria-label="On Click" onClick={scrollToTop}>RESERVATIONS</Link>
+                <Link to="/order-online" className="nav-item-overlay" aria-label="On Click" onClick={scrollToTop}>ORDER ONLINE</Link>
+                <Link to="/login" className="nav-item-overlay" aria-label="On Click" onClick={scrollToTop}>LOGIN</Link>
             </nav>
         </div>
     );
