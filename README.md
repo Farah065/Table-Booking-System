@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="src/Images/logo-small.png" alt="Logo">
+  <img src="src/Images/logo-small.png" width="500px" alt="Logo">
 </div>
 
 <h3 align="center">Little Lemon</h3>
