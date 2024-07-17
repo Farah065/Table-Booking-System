@@ -913,7 +913,7 @@ footer section {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 576px) {
     footer {
         height: 480px;
     }
