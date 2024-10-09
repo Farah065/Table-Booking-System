@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 // import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import LogoSmall from '../Images/logo-small.png';
+import LogoSmall from '../Images/logo-small.webp';
 import Hamburger from 'hamburger-react'
 import NavOverlay from './NavOverlay';
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Logo from '../Images/logo-large.png';
+import Logo from '../Images/logo-large.webp';
 
 function Footer() {
     function scrollToTop() {

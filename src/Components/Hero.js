@@ -1,4 +1,4 @@
-import HeroImage from '../Images/hero-image.jpg';
+import HeroImage from '../Images/hero-image.webp';
 import { Link } from 'react-router-dom';
 
 function Hero() {

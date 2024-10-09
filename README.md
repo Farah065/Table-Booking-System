@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="src/Images/logo-small.png" width="500px" alt="Logo">
+  <img src="src/Images/logo-small.webp" width="500px" alt="Logo">
 </div>
 
 <h3 align="center">Little Lemon</h3>
@@ -16,7 +16,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Landing page](src/Images/landing.png)
+![Landing page](src/Images/landing.webp)
 This web application was created using React JS as the capstone project for the <a href="https://www.coursera.org/professional-certificates/meta-front-end-developer" target="_blank">Meta Frontend Developer Professional Certificate</a>.
 It serves as a website for the mediterranean restaurant, Little Lemon, with a landing page that tells you about them and showcases part of their menu as well as some reviews. It also has a table reservation form complete with client-side validation, which was the main focus of the project.
 
@@ -40,8 +40,8 @@ It serves as a website for the mediterranean restaurant, Little Lemon, with a la
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-![Reservation form (branch & date/time)](src/Images/form.png)
-![Reservation form (personal info)](src/Images/form2.png)
+![Reservation form (branch & date/time)](src/Images/form.webp)
+![Reservation form (personal info)](src/Images/form2.webp)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

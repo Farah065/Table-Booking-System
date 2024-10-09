@@ -1,7 +1,7 @@
 import MenuCard from "./MenuCard";
-import greekSaladImg from '../Images/greek-salad.jpg';
-import bruschettaImg from '../Images/bruschetta.jpg';
-import lemonDessertImg from '../Images/lemon-dessert.jpg';
+import greekSaladImg from '../Images/greek-salad.webp';
+import bruschettaImg from '../Images/bruschetta.webp';
+import lemonDessertImg from '../Images/lemon-dessert.webp';
 
 function Specials() {
     const greekSalad = {

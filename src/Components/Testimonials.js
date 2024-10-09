@@ -1,8 +1,8 @@
 import TestimonialCard from "./TestimonialCard";
-import personImg1 from "../Images/person-1.jpg";
-import personImg2 from "../Images/person-2.jpg";
-import personImg3 from "../Images/person-3.jpg";
-// import personImg4 from "../Images/person-4.jpg";
+import personImg1 from "../Images/person-1.webp";
+import personImg2 from "../Images/person-2.webp";
+import personImg3 from "../Images/person-3.webp";
+// import personImg4 from "../Images/person-4.webp";
 
 function Testimonials() {
     const person1 = {

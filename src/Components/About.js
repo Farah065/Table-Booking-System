@@ -1,5 +1,5 @@
-import Image1 from '../Images/mario-adrian-1.jpg';
-import Image2 from '../Images/mario-adrian-2.jpg';
+import Image1 from '../Images/mario-adrian-1.webp';
+import Image2 from '../Images/mario-adrian-2.webp';
 
 function About() {
     return (
