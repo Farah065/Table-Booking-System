@@ -7,7 +7,7 @@ import Location from './Form/Location';
 import Loc1 from '../Images/branch-1.webp';
 import Loc2 from '../Images/branch-2.webp';
 import Loc3 from '../Images/branch-3.webp';
-import Lemon from '../Images/lemon.png';
+import Lemon from '../Images/lemon.webp';
 import {ReactComponent as CheckmarkSVG} from '../SVGs/circled-checkmark.svg';
 import {ReactComponent as ErrorSVG} from '../SVGs/error.svg';
 import { fetchAPI } from '../mockAPI';
