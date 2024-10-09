@@ -1,4 +1,4 @@
-import MenuCard from "./MenuCard";
+import MenuCard from './MenuCard';
 import greekSaladImg from '../Images/greek-salad.webp';
 import bruschettaImg from '../Images/bruschetta.webp';
 import lemonDessertImg from '../Images/lemon-dessert.webp';
